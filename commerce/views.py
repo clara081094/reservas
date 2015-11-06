@@ -10,4 +10,7 @@ from django.contrib import messages
 #import RPi.GPIO as GPIO
 
 def index(request):
-    return render_to_response('commerce/index.html')
+#    return render_to_response('commerce/index.html')
+
+#def login(request):
+	return render_to_response('commerce/login.html')

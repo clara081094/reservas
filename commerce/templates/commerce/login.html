@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SISTEMA M-COMMERCE</title> 
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{% static "commerce/css/bootstrap.min.css" %}" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static "commerce/font-awesome/css/font-awesome.min.css" %}" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{% static "commerce/css/animate.min.css" %}" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static "commerce/css/creative.css" %}" type="text/css">
+
+</head>
+
+<body id="page-top">
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner"> 
+            <div class="col-lg-4 col-lg-offset-4 text-center">  
+            <h1>BIENVENIDOS</h1> <br><br>
+            <form action="/login/" method="post">
+                {% if state %}
+                    <p>{{ state }}<p/>
+                {% endif %}
+                <input type="text" name="username" class="form-control" placeholder="Username"  value="{{username}}" /><br>
+                <input type="password" name="passw3rd" class="form-control" placeholder="Password" value="" /><br><br>
+                <input type="submit" name="login" class="btn btn-default btn-xl" value="Login In">
+            </form>
+            </div>
+        </div>
+    </header>
+    <!-- jQuery -->
+    <script src="{% static "commerce/js/jquery.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "commerce/js/bootstrap.min.js" %}"></script>
+ 
+    <!-- Plugin JavaScript -->
+    <script src="{% static "commerce/js/jquery.easing.min.js" %}"></script>
+    <script src="{% static "commerce/js/jquery.fittext.js" %}"></script>
+    <script src="{% static "commerce/js/wow.min.js" %}"></script>
+
+    <!-- Custom Theme JavaScript --'>
+    <script src="{% static 'js/creative.js' %}"></script/bod">y>
+!-->
+</html>
