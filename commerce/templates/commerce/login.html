@@ -34,13 +34,13 @@
         <div class="header-content">
             <div class="header-content-inner"> 
             <div class="col-lg-4 col-lg-offset-4 text-center">  
-            <h1>BIENVENIDOS</h1> <br><br>
-            <form action="/login/" method="post">
-                {% if state %}
-                    <p>{{ state }}<p/>
+            <h1>BIENVENIDOS</h1> <br>
+            {% if state %}
+                    <p class="text-faded">{{ state }}<p/>
                 {% endif %}
+            <form action="/login/" method="post">
                 <input type="text" name="username" class="form-control" placeholder="Username"  value="{{username}}" /><br>
-                <input type="password" name="passw3rd" class="form-control" placeholder="Password" value="" /><br><br>
+                <input type="password" name="password" class="form-control" placeholder="Password" value="" /><br><br>
                 <input type="submit" name="login" class="btn btn-default btn-xl" value="Login In">
             </form>
             </div>
