@@ -13,7 +13,13 @@ from django.contrib import messages
 @login_required(login_url='/login/')
 def index(request):
     nombre = request.user.get_short_name()
-    return render_to_response('commerce/index.html',{'nombre':nombre})
+    grupos = request.user.groups.all()
+
+    if(("Administrador" in grupos) or (request.user.is_superuser)):
+        marca =1
+    else:
+        marca =0
+    return render_to_response('commerce/index.html',{'nombre':nombre,'marca':marca})
 
 @csrf_exempt
 def login_user(request):

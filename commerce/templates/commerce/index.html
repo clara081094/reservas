@@ -33,7 +33,7 @@
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="index.html"><h1>HOLA: {{ nombre }}</h1></a>
+                <a href="index.html"><h1>HOLA: {{ nombre }} </h1></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -45,8 +45,10 @@
                             <li><a href="#">USUARIO</a></li>
                             <li><a href="#">MODIFICAR CLIENTE</a></li>
                             <li><a href="#">MODIFICAR TARIFAS</a></li>
+                             {% if marca == 1 %}
                             <li><a href="#">ESTADO DE CUENTA</a></li>
-                            <li><a href="#">VER VENTAS</a></li>                        
+                            <li><a href="#">VER VENTAS</a></li>  
+                            {% endif %}                      
                         </ul>
                     </li>
                     <li>
