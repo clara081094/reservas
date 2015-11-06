@@ -91,13 +91,21 @@ aside {
 .navbar-default .navbar-header .navbar-brand {
     text-transform: uppercase;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    font-weight: 700;
-    color: #f05f40;
+    font-size: 10px;
+    color: black;
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
     color: #eb3812;
+}
+
+
+.navbar-default .navbar-header a h1, .navbar-default .navbar-header a:focus h1{
+    font-size: 13px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color:black;
 }
 
 .navbar-default .nav > li>a,
@@ -351,7 +359,7 @@ header .header-content .header-content-inner p {
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
     border-color: #AEA3A3;
-    color: #;
+    color: #fff;
     background-color: #AEA3A3;
 }
 

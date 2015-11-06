@@ -12,7 +12,8 @@ from django.contrib import messages
 @csrf_exempt
 @login_required(login_url='/login/')
 def index(request):
-    return render_to_response('commerce/index.html')
+    nombre = request.user.get_short_name()
+    return render_to_response('commerce/index.html',{'nombre':nombre})
 
 @csrf_exempt
 def login_user(request):
