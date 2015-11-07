@@ -20,4 +20,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^commerce/', include('commerce.urls')),
     url(r'^login/$', 'commerce.views.login_user'),
+    url(r'^usuarios/$', 'commerce.views.usuarios'),
 )

@@ -3,7 +3,7 @@ from django.template import RequestContext, loader
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect
 from django.contrib import messages
@@ -13,9 +13,8 @@ from django.contrib import messages
 @login_required(login_url='/login/')
 def index(request):
     nombre = request.user.get_short_name()
-    grupos = request.user.groups.all()
 
-    if(("Administrador" in grupos) or (request.user.is_superuser)):
+    if((request.user.groups.filter(name='Administrador').exists()) or (request.user.is_superuser)):
         marca =1
     else:
         marca =0
@@ -46,3 +45,15 @@ def login_user(request):
             state = "Su username y/o password son incorrectos."
 
     return render_to_response('commerce/login.html',{'state':state, 'username': username})
+
+@csrf_exempt
+@login_required(login_url='/login/')
+@user_passes_test(lambda u: u.groups.filter(name='Operador').count() == 0, login_url='/commerce/')
+def usuarios(request):
+    nombre = request.user.get_short_name()
+
+    if((request.user.groups.filter(name='Administrador').exists()) or (request.user.is_superuser)):
+        marca =1
+    else:
+        marca =0
+    return render_to_response('commerce/Mantenimiento/usuarios.html',{'nombre':nombre,'marca':marca})

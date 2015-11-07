@@ -29,11 +29,10 @@
 </head>
 
 <body id="page-top">
-
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="index.html"><h1>HOLA: {{ nombre }} </h1></a>
+                <a href="../commerce"><h1>HOLA: {{ nombre }} </h1></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -41,8 +40,9 @@
                     <li>
                         <a class="dropdown-toggle" data-toggle="dropdown">MANTENIMIENTO</a>
                         <ul class="dropdown-menu">
-
-                            <li><a href="#">USUARIO</a></li>
+                            {% if marca == 1 %}
+                            <li><a href="../usuarios">USUARIO</a></li>
+                            {% endif %} 
                             <li><a href="#">MODIFICAR CLIENTE</a></li>
                             <li><a href="#">MODIFICAR TARIFAS</a></li>
                              {% if marca == 1 %}

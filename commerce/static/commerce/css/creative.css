@@ -25,7 +25,8 @@ hr.light {
 }
 
 a {
-    color: #f05f40;
+    color: black;
+    font-size: 12px;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
