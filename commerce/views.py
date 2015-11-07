@@ -57,3 +57,7 @@ def usuarios(request):
     else:
         marca =0
     return render_to_response('commerce/Mantenimiento/usuarios.html',{'nombre':nombre,'marca':marca})
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/commerce/')

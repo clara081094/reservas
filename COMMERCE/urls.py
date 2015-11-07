@@ -21,4 +21,5 @@ urlpatterns = patterns('',
     url(r'^commerce/', include('commerce.urls')),
     url(r'^login/$', 'commerce.views.login_user'),
     url(r'^usuarios/$', 'commerce.views.usuarios'),
+    url(r'^salir/$', 'commerce.views.logout_view'),
 )
