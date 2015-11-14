@@ -81,11 +81,74 @@
     </nav>
 <br><br><br>
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">CREAR USUARIOS</a></li>
-  <li role="presentation"><a href="#">MODIFICAR USUARIOS</a></li>
-  <li role="presentation"><a href="#">ELIMINAR USUARIOS</a></li>
+  <li role="presentation" class="active"><a href="#div1" data-toggle="tab">CREAR USUARIOS</a></li>
+  <li role="presentation"><a href="#div2" data-toggle="tab">MODIFICAR USUARIOS</a></li>
+  <li role="presentation"><a href="#div3" data-toggle="tab">ELIMINAR USUARIOS</a></li>
 </ul>
 
+<section class="tab-content">
+    <article class="tab-pane active" id="div1">
+        <div class="container">
+        <form class="usuarios" method="post" action='/usuarios/'>
+        {% csrf_token %}
+        {{ form }}
+            <input type="submit" value="Crear un nuevo usuario" />
+        </form>
+        </div>
+    </article>
+    <article class="tab-pane" id="div2">
+        <div class="container">
+        <table id="example" class="table table-striped table-bordered usuarios" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Tipo de usuario</th>
+                <th>Modificar</th>
+            </tr>
+            {% for item in lista %}
+            <tr> 
+                <td>{{ item.first_name }}</td>
+                <td>{{ item.last_name }}</td>
+                <td>{{ item.username }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.groups.name }}</td>
+                <td><a href="">MODIFICAR</a></td>
+            </tr>
+            {% endfor %}
+        </thead>
+         </table>
+         </div>
+    </article>
+    <article class="tab-pane" id="div3">
+        <div class="container">
+        <table id="example" class="table table-striped table-bordered usuarios" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Tipo de usuario</th>
+                <th>Eliminar</th>
+            </tr>
+            {% for item in lista %}
+            <tr> 
+                <td>{{ item.first_name }}</td>
+                <td>{{ item.last_name }}</td>
+                <td>{{ item.username }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.groups.name }}</td>
+                <td><a href="">ELIMINAR</a></td>
+            </tr>
+            {% endfor %}
+        </thead>
+         </table>
+         </div>
+    </article>
+</section>
     <!-- jQuery -->
     <script src="{% static "commerce/js/jquery.js" %}"></script>
 

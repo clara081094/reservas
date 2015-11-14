@@ -5,9 +5,12 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+from forms import RegistrationForm
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-#import RPi.GPIO as GPIO
+
 
 @csrf_exempt
 @login_required(login_url='/login/')
@@ -56,8 +59,19 @@ def usuarios(request):
         marca =1
     else:
         marca =0
-    return render_to_response('commerce/Mantenimiento/usuarios.html',{'nombre':nombre,'marca':marca})
 
+    if request.POST: # If the form has been submitted...
+        form = RegistrationForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            form.save()
+            return HttpResponseRedirect('/commerce/') # Redirect after POST
+    else:
+        form = RegistrationForm()
+
+    lista = User.objects.all()
+
+    return render(request, 'commerce/Mantenimiento/usuarios.html', {'lista':lista, 'nombre':nombre,'marca':marca, 'form': form})
+    
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/commerce/')
