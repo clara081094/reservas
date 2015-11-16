@@ -74,4 +74,13 @@ def usuarios(request):
     
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/commerce/')
+    return HttpResponseRedirect('/usuarios/')
+
+@csrf_exempt
+def deleteu(request):
+
+    if request.POST:
+        borrar = request.POST['campo']
+        User.objects.get(id=borrar).delete()
+
+    return HttpResponseRedirect('/usuarios/')

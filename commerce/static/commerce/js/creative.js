@@ -45,4 +45,12 @@
     // Initialize WOW.js Scrolling Animations
     new WOW().init();
 
+    $('.launchConfirm').on('click', function (e) {
+    $('#confirm')
+        .modal({ backdrop: 'static', keyboard: false })
+        .one('click', '#delete', function (e) {
+            //delete function
+        });
+})
+
 })(jQuery); // End of use strict

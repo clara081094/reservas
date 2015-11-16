@@ -92,7 +92,7 @@
         <form class="usuarios" method="post" action='/usuarios/'>
         {% csrf_token %}
         {{ form }}
-            <input type="submit" value="Crear un nuevo usuario" />
+            <input type="submit" name="form1" value="Crear un nuevo usuario" />
         </form>
         </div>
     </article>
@@ -141,7 +141,10 @@
                 <td>{{ item.username }}</td>
                 <td>{{ item.email }}</td>
                 <td>{{ item.groups.name }}</td>
-                <td><a href="">ELIMINAR</a></td>
+                <form action="/deleteu/" method="post">
+                    <input type="hidden" name="campo" value={{ item.id }}>
+                    <td><input type="submit" value="eliminar"></td>
+                </form> 
             </tr>
             {% endfor %}
         </thead>
