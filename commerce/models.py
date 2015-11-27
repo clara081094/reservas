@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class Cliente(models.Model):
-    cli_id = models.IntegerField(db_column='CLI_ID', primary_key=True)  # Field name made lowercase.
+    cli_id = models.AutoField(db_column='CLI_ID', primary_key=True)  # Field name made lowercase.
     cli_dni = models.CharField(db_column='CLI_DNI', unique=True, max_length=8, blank=True, null=True)  # Field name made lowercase.
     cli_nombres = models.CharField(db_column='CLI_NOMBRES', max_length=70)  # Field name made lowercase.
     cli_appaterno = models.CharField(db_column='CLI_APPATERNO', max_length=45)  # Field name made lowercase.
@@ -18,6 +18,9 @@ class Cliente(models.Model):
         managed = False
         db_table = 'CLIENTE'
 
+    def __str__(self):
+        return self.cli_dni
+
 
 class Estado(models.Model):
     est_id = models.IntegerField(db_column='EST_ID', primary_key=True)  # Field name made lowercase.
@@ -30,7 +33,7 @@ class Estado(models.Model):
 
 
 class Mensaje(models.Model):
-    men_id = models.IntegerField(db_column='MEN_ID', primary_key=True)  # Field name made lowercase.
+    men_id = models.AutoField(db_column='MEN_ID', primary_key=True)  # Field name made lowercase.
     men_nombre = models.CharField(db_column='MEN_NOMBRE', max_length=45)  # Field name made lowercase.
     men_contenido = models.CharField(db_column='MEN_CONTENIDO', max_length=400)  # Field name made lowercase.
     men_fechae = models.DateField(db_column='MEN_FECHAE')  # Field name made lowercase.
@@ -53,10 +56,10 @@ class Pago(models.Model):
 
 
 class Reserva(models.Model):
-    res_id = models.IntegerField(db_column='RES_ID', primary_key=True)  # Field name made lowercase.
-    res_fecha = models.CharField(db_column='RES_FECHA', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    res_cuentadm = models.CharField(db_column='RES_CUENTADM', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    res_detalles = models.CharField(db_column='RES_DETALLES', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    res_id = models.AutoField(db_column='RES_ID', primary_key=True)  # Field name made lowercase.
+    res_fecha = models.DateTimeField(db_column='RES_FECHA')  # Field name made lowercase.
+    res_cuentadm = models.CharField(db_column='RES_CUENTADM', max_length=9)   # Field name made lowercase.
+    res_detalles = models.CharField(db_column='RES_DETALLES', max_length=300, blank=True, null=True)  # Field name made lowercase.
     cliente_cli = models.ForeignKey(Cliente, db_column='CLIENTE_CLI_ID')  # Field name made lowercase.
     mensaje_men = models.ForeignKey(Mensaje, db_column='MENSAJE_MEN_ID')  # Field name made lowercase.
     tarifa_tar = models.ForeignKey('Tarifa', db_column='TARIFA_TAR_ID')  # Field name made lowercase.

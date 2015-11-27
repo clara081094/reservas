@@ -119,12 +119,12 @@ aside {
 
 .navbar-default .nav > li>a:hover,
 .navbar-default .nav>li>a:focus:hover {
-    color: #f05f40;
+    color: gray;
 }
 
 .navbar-default .nav > li.active>a,
 .navbar-default .nav>li.active>a:focus {
-    color: #f05f40!important;
+    color: gray;
     background-color: transparent;
 }
 
@@ -398,9 +398,9 @@ fieldset[disabled] .btn-default.active {
 }
 
 .btn-primary {
-    border-color: #f05f40;
+    border-color: #aea3a3:;
     color: #fff;
-    background-color: #f05f40;
+    background-color: #aea3a3:;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -412,9 +412,9 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-    border-color: #ed431f;
+    border-color: #aea3a3;
     color: #fff;
-    background-color: #ee4b28;
+    background-color: #aea3a3;
 }
 
 .btn-primary:active,

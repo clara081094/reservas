@@ -23,4 +23,7 @@ urlpatterns = patterns('',
     url(r'^usuarios/$', 'commerce.views.usuarios'),
     url(r'^salir/$', 'commerce.views.logout_view'),
     url(r'^deleteu/$', 'commerce.views.deleteu'),
+    url(r'^reservar/$', 'commerce.views.reservar'),
+    url(r'^reservars/$', 'commerce.views.reservars'),
+    url(r'^buscarc/$', 'commerce.views.buscarDNI'),
 )
