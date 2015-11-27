@@ -142,7 +142,7 @@ def reservars(request):
             form.save()
             met = Mensaje.objects.latest('men_id')
             ret = Reserva.objects.latest('res_id')
-            ret.estado_est=Estado.objects.get(est_id=1)
+            ret.estado_est=Estado.objects.get(est_id=3)
             ret.cliente_cli=Cliente.objects.get(cli_id=guardac)
             ret.mensaje_men=met
             ret.save()
@@ -184,6 +184,48 @@ def buscarDNI(request):
     
     return render(request, 'commerce/Reserva/generarReserva.html', {'existe':existe,'cliente':cliente})
 
+@csrf_exempt
+@login_required(login_url='/login/')
+def reservas(request):
+    nombre = request.user.get_short_name()
 
+    if((request.user.groups.filter(name='Administrador').exists()) or (request.user.is_superuser)):
+        marca =1
+    else:
+        marca =0
+
+    #if request.POST: # If the form has been submitted...
+    #    form = RegistrationForm(request.POST) # A form bound to the POST data
+    #    if form.is_valid(): # All validation rules pass
+    #        form.save()
+    #        return HttpResponseRedirect('/commerce/') # Redirect after POST
+    #else:
+    #    form = RegistrationForm()
+
+    lista = Reserva.objects.all()
+
+    return render(request, 'commerce/Reserva/verReservas.html', {'lista':lista, 'nombre':nombre,'marca':marca})
+ 
+@csrf_exempt
+@login_required(login_url='/login/')
+def mensajes(request):
+    nombre = request.user.get_short_name()
+
+    if((request.user.groups.filter(name='Administrador').exists()) or (request.user.is_superuser)):
+        marca =1
+    else:
+        marca =0
+
+    #if request.POST: # If the form has been submitted...
+    #    form = RegistrationForm(request.POST) # A form bound to the POST data
+    #    if form.is_valid(): # All validation rules pass
+    #        form.save()
+    #        return HttpResponseRedirect('/commerce/') # Redirect after POST
+    #else:
+    #    form = RegistrationForm()
+
+    lista = Mensaje.objects.all()
+
+    return render(request, 'commerce/Mensaje/verMensajes.html', {'lista':lista, 'nombre':nombre,'marca':marca})
 
 

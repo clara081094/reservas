@@ -26,4 +26,6 @@ urlpatterns = patterns('',
     url(r'^reservar/$', 'commerce.views.reservar'),
     url(r'^reservars/$', 'commerce.views.reservars'),
     url(r'^buscarc/$', 'commerce.views.buscarDNI'),
+    url(r'^reservas/$', 'commerce.views.reservas'),
+    url(r'^mensajes/$', 'commerce.views.mensajes'),
 )
