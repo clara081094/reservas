@@ -41,7 +41,7 @@ def login_user(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
-                request.session.set_expiry(60)
+                request.session.set_expiry(180)
                 login(request, user)
                 return HttpResponseRedirect('/commerce/')
             else:
@@ -146,6 +146,7 @@ def reservars(request):
             ret.cliente_cli=Cliente.objects.get(cli_id=guardac)
             ret.mensaje_men=met
             ret.save()
+            return HttpResponseRedirect('/reservas/')
         else:
             print(men)
             print("formato mensaje invalido")
@@ -165,9 +166,12 @@ def buscarDNI(request):
 
         cliente = ClienteForm(request.POST)
         if cliente.is_valid(): # All validation rules pass
-            cliente.save()
-            guardac = cliente.cli_id
-            return reservar(request, guardac)
+            try:
+                cliente.save()
+                guardac = cliente.cli_id
+                return reservar(request, guardac)
+            except:
+                return HttpResponseRedirect('/buscarc/')
         else:
             print("no se guardo")
     else:
