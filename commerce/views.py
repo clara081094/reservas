@@ -11,7 +11,10 @@ from models import Cliente,Reserva,Mensaje,Estado
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.db import connection, transaction
+from django.db import connection
+from ussd import Ussd
+import cgi, cgitb 
+#import os
 
 
 @csrf_exempt
@@ -41,7 +44,7 @@ def login_user(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
-                request.session.set_expiry(180)
+                #request.session.set_expiry(180)
                 login(request, user)
                 return HttpResponseRedirect('/commerce/')
             else:
@@ -231,5 +234,48 @@ def mensajes(request):
     lista = Mensaje.objects.all()
 
     return render(request, 'commerce/Mensaje/verMensajes.html', {'lista':lista, 'nombre':nombre,'marca':marca})
+
+@csrf_exempt
+@login_required(login_url='/login/')
+def estadocta(request):
+    nombre = request.user.get_short_name()
+
+    if((request.user.groups.filter(name='Administrador').exists()) or (request.user.is_superuser)):
+        marca =1
+    else:
+        marca =0
+
+    #form = cgi.FieldStorage() 
+    mensaje = ""
+    if request.POST:
+        mensaje = request.POST['codigo']
+
+    #mensaje = request.POST["codigo"] 
+    bim=Ussd()
+
+    if mensaje is "":
+        bim.iniciarSesion()
+        mensaje=bim.getMensajes()
+        return render(request, 'commerce/Mantenimiento/estadoCuenta.html', {'nombre':nombre,'marca':marca, 'mensaje':mensaje})
+
+    else:
+        bim.respuesta(mensaje)
+        mensaje=bim.getMensajes()
+        return render(request, 'commerce/Mantenimiento/estadoCuenta.html', {'nombre':nombre,'marca':marca, 'mensaje':mensaje})
+
+def cerrarSesion(request):
+    nombre = request.user.get_short_name()
+
+    if((request.user.groups.filter(name='Administrador').exists()) or (request.user.is_superuser)):
+        marca =1
+    else:
+        marca =0
+
+    bim=Ussd()
+    bim.terminar()
+    
+    return HttpResponseRedirect('/commerce/')
+
+
 
 

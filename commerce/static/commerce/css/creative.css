@@ -76,14 +76,15 @@ aside {
 .no-padding {
     padding: 0;
 }
-.nav-bar{
+
+.nav-bar {
     color:black;
 }
 
 .navbar-default {
     border-color: rgba(34,34,34,.05);
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    background-color: #fff;
+    background-color: transparent;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -488,3 +489,10 @@ body {
     webkit-tap-highlight-color: #222;
 }
 
+#mainNav {
+    background-color: transparent;
+}
+
+#userNav {
+    background-color: white;
+}

@@ -28,4 +28,6 @@ urlpatterns = patterns('',
     url(r'^buscarc/$', 'commerce.views.buscarDNI'),
     url(r'^reservas/$', 'commerce.views.reservas'),
     url(r'^mensajes/$', 'commerce.views.mensajes'),
+    url(r'^estadocta/$', 'commerce.views.estadocta'),
+    url(r'^cerrarSesion/$', 'commerce.views.cerrarSesion'),
 )

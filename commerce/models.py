@@ -57,7 +57,7 @@ class Pago(models.Model):
 
 class Reserva(models.Model):
     res_id = models.AutoField(db_column='RES_ID', primary_key=True)  # Field name made lowercase.
-    res_fecha = models.DateTimeField(db_column='RES_FECHA')  # Field name made lowercase.
+    res_fecha = models.DateField(db_column='RES_FECHA')  # Field name made lowercase.
     res_cuentadm = models.CharField(db_column='RES_CUENTADM', max_length=9)   # Field name made lowercase.
     res_detalles = models.CharField(db_column='RES_DETALLES', max_length=300, blank=True, null=True)  # Field name made lowercase.
     cliente_cli = models.ForeignKey(Cliente, db_column='CLIENTE_CLI_ID')  # Field name made lowercase.
