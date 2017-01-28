@@ -10,8 +10,8 @@ class Ussd:
 	estado = 0
 
 	def __init__(self):
-		self.tn = telnetlib.Telnet('192.168.1.50',5038,10)
-
+		self.tn = telnetlib.Telnet('127.0.0.1',5038,10)
+		
 	def cargar(self,tx):
 		tx.write("Action: Login\r\n")
 		tx.write("UserName: admin\r\n")
